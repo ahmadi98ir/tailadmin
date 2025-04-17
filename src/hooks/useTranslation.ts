@@ -4,12 +4,24 @@ import { useState, useCallback } from 'react';
 import { useTranslation as useTranslationOriginal } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
 
+type TranslationKey = string;
+
 export function useTranslation() {
-  const { t, i18n } = useTranslationOriginal();
+  const { t: originalT, i18n } = useTranslationOriginal();
   const { isRTL } = useTheme();
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
+  const t = useCallback((key: TranslationKey): string => {
+    try {
+      const translation = originalT(key);
+      return typeof translation === 'string' ? translation : key;
+    } catch (err) {
+      console.error(`Translation error for key ${key}:`, err);
+      return key;
+    }
+  }, [originalT]);
+
   const changeLanguage = useCallback(async (language: string) => {
     try {
       setIsChangingLanguage(true);
@@ -22,23 +34,9 @@ export function useTranslation() {
       setIsChangingLanguage(false);
     }
   }, [i18n]);
-
-  const getTranslation = useCallback((key: string, options?: any) => {
-    try {
-      const translation = t(key, options);
-      // If the translation is the same as the key, it might be missing
-      if (translation === key) {
-        console.warn(`Missing translation for key: ${key}`);
-      }
-      return translation;
-    } catch (err) {
-      console.error(`Translation error for key ${key}:`, err);
-      return key; // Fallback to key
-    }
-  }, [t]);
   
   return {
-    t: getTranslation,
+    t,
     i18n,
     changeLanguage,
     currentLanguage: i18n.language,
