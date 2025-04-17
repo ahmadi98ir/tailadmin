@@ -8,6 +8,12 @@ const nextConfig = {
     // در زمان ساخت، خطاهای TypeScript را نادیده بگیرید
     ignoreBuildErrors: true,
   },
+  output: 'standalone',
+  poweredByHeader: false,
+  reactStrictMode: true,
+  // برای کار کردن با assetPrefix در محیط‌های مختلف
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
 };
 
 module.exports = nextConfig; 
