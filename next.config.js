@@ -13,14 +13,8 @@ const nextConfig = {
   images: {
     unoptimized: true, // حل مشکل بهینه‌سازی تصاویر
   },
-  experimental: {
-    missingSuspenseWithCSRBailout: false, // حل مشکل Suspense
-  },
   poweredByHeader: false,
-  reactStrictMode: true,
-  // برای کار کردن با assetPrefix در محیط‌های مختلف
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  reactStrictMode: false,
 };
 
 module.exports = nextConfig; 

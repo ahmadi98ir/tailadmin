@@ -27,13 +27,13 @@ html[dir="rtl"] {
 /* Simple component classes */
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-4 py-2 rounded;
+    @apply bg-[#3C50E0] text-white px-4 py-2 rounded;
   }
 }
 
 /* Focus styles */
 @layer base {
   :focus-visible {
-    @apply outline-none ring-2 ring-primary;
+    @apply outline-none ring-2 ring-[#3C50E0];
   }
 }

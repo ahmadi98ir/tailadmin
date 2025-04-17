@@ -3,5 +3,4 @@
 <rect width="630" height="120" fill="#239f40"/>
 <rect width="630" height="120" y="120" fill="#ffffff"/>
 <rect width="630" height="120" y="240" fill="#da0000"/>
-<path d="M67,180 a8,8 0 1 0 16,0 a8,8 0 1 0 -16,0 M67,180 a8,8 0 1 1 16,0 a8,8 0 1 1 -16,0" fill="none" stroke="#da0000" stroke-width="0.5"/>
 </svg> 
