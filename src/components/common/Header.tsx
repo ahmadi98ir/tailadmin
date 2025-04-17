@@ -36,6 +36,9 @@ const Header = () => {
     toggleDirection();
   };
 
+  // Helper function to ensure string type for translations
+  const translate = (key: string): string => String(t(key));
+
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
@@ -44,7 +47,7 @@ const Header = () => {
           <button
             onClick={toggleSidebar}
             className="inline-flex items-center justify-center rounded-sm bg-white p-2 text-body hover:bg-gray-200 dark:bg-boxdark dark:text-bodydark dark:hover:bg-boxdark-2"
-            aria-label={t('toggleSidebar')}
+            aria-label={translate('toggleSidebar')}
             aria-expanded="false"
           >
             <svg
@@ -84,7 +87,7 @@ const Header = () => {
           <Link 
             className="block flex-shrink-0 lg:hidden" 
             href="/"
-            aria-label={t('home')}
+            aria-label={translate('home')}
           >
             <span className="text-xl font-bold">TailAdmin</span>
           </Link>
@@ -118,7 +121,7 @@ const Header = () => {
 
               <input
                 type="text"
-                placeholder={t('search')}
+                placeholder={translate('search')}
                 className="w-full rounded-lg border border-stroke bg-transparent py-3 pl-12 pr-4 outline-none focus:border-primary focus-visible:shadow-none dark:border-strokedark dark:bg-boxdark dark:text-white"
               />
             </div>
@@ -132,7 +135,7 @@ const Header = () => {
               <button
                 onClick={toggleTheme}
                 className="inline-flex items-center justify-center rounded-sm bg-gray-100 p-2 text-body hover:bg-gray-200 dark:bg-boxdark-2 dark:text-bodydark dark:hover:bg-boxdark"
-                aria-label={t('toggleTheme')}
+                aria-label={translate('toggleTheme')}
                 aria-pressed={theme === 'dark'}
               >
                 {theme === 'dark' ? (
@@ -167,7 +170,7 @@ const Header = () => {
                   </svg>
                 )}
                 <span className="sr-only">
-                  {theme === 'dark' ? t('switchToLightMode') : t('switchToDarkMode')}
+                  {translate(theme === 'dark' ? 'switchToLightMode' : 'switchToDarkMode')}
                 </span>
               </button>
             </li>
@@ -183,14 +186,14 @@ const Header = () => {
                   transition-opacity duration-200
                   ${isChangingLanguage ? 'opacity-50 cursor-not-allowed' : ''}
                 `}
-                aria-label={t('changeLanguage')}
+                aria-label={translate('changeLanguage')}
                 aria-busy={isChangingLanguage}
               >
                 <span className="text-sm font-medium">
                   {isChangingLanguage ? '...' : (isRTL ? 'EN' : 'فا')}
                 </span>
                 <span className="sr-only">
-                  {isRTL ? t('switchToEnglish') : t('switchToPersian')}
+                  {translate(isRTL ? 'switchToEnglish' : 'switchToPersian')}
                 </span>
               </button>
             </li>
