@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# تیل ادمین - داشبورد مدیریت فارسی با Next.js و Tailwind CSS
 
-## Getting Started
+<div dir="rtl">
 
-First, run the development server:
+مدیریت پنل فارسی که با استفاده از Next.js و Tailwind CSS ساخته شده است و از راست به چپ (RTL) پشتیبانی می‌کند. این پروژه یک کپی از [TailAdmin Pro](https://nextjs-demo.tailadmin.com/) است که به فارسی ترجمه شده است.
+
+## ویژگی‌ها
+
+- 🌙 پشتیبانی از حالت شب / روز
+- 🌐 پشتیبانی کامل از دو زبان فارسی و انگلیسی
+- 📱 طراحی واکنش‌گرا
+- 🎨 قابلیت سفارشی‌سازی بالا
+- 📊 نمودارها و داشبورد تحلیلی
+- 📋 مدیریت کاربران و سفارشات
+- 🔔 اعلان‌ها و هشدارها
+- 📝 فرم‌های مختلف و اجزای رابط کاربری
+
+## تکنولوژی‌ها
+
+- **Next.js 15**: فریم‌ورک قدرتمند برای ساخت برنامه‌های وب
+- **React 19**: کتابخانه مدرن جاوااسکریپت برای ساخت رابط کاربری
+- **Tailwind CSS 4**: فریم‌ورک CSS برای طراحی سریع و نتیجه‌بخش
+- **TypeScript**: زبان برنامه‌نویسی تایپ‌دار برای توسعه مطمئن و قابل اعتماد
+
+## نصب و راه‌اندازی
+
+برای اجرای پروژه، مراحل زیر را دنبال کنید:
 
 ```bash
+# کلون کردن مخزن
+git clone https://github.com/your-username/tailadmin-persian.git
+
+# رفتن به دایرکتوری پروژه
+cd tailadmin-persian
+
+# نصب وابستگی‌ها
+npm install
+
+# اجرای سرور توسعه
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+سپس مرورگر خود را باز کنید و به آدرس `http://localhost:3000` بروید.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ساختار پروژه
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+📁 public/          # فایل‌های استاتیک
+  📁 fonts/         # فونت‌های پروژه
+  📁 images/        # تصاویر پروژه
+📁 src/
+  📁 app/           # صفحات و روتینگ Next.js
+  📁 components/    # کامپوننت‌های قابل استفاده مجدد
+    📁 charts/      # کامپوننت‌های نمودار
+    📁 common/      # کامپوننت‌های عمومی
+    📁 forms/       # کامپوننت‌های فرم
+    📁 tables/      # کامپوننت‌های جدول
+    📁 ui/          # کامپوننت‌های رابط کاربری
+  📁 contexts/      # کانتکست‌های ری‌اکت
+  📁 hooks/         # هوک‌های سفارشی
+  📁 locales/       # فایل‌های ترجمه
+  📁 types/         # تعریف انواع TypeScript
+  📁 utils/         # توابع کمکی
+```
 
-## Learn More
+</div>
 
-To learn more about Next.js, take a look at the following resources:
+<div dir="ltr">
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# TailAdmin - Persian Admin Dashboard with Next.js and Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A Persian admin panel built with Next.js and Tailwind CSS with right-to-left (RTL) support. This project is a replica of [TailAdmin Pro](https://nextjs-demo.tailadmin.com/) translated to Persian.
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 🌙 Dark/Light Mode Support
+- 🌐 Complete Persian and English Localization
+- 📱 Responsive Design
+- 🎨 Highly Customizable
+- 📊 Charts and Analytics Dashboard
+- 📋 User and Order Management
+- 🔔 Notifications and Alerts
+- 📝 Various Forms and UI Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technologies
+
+- **Next.js 15**: Powerful framework for building web applications
+- **React 19**: Modern JavaScript library for building user interfaces
+- **Tailwind CSS 4**: Utility-first CSS framework for rapid design
+- **TypeScript**: Typed programming language for reliable development
+
+## Installation and Setup
+
+To run the project, follow these steps:
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/tailadmin-persian.git
+
+# Navigate to the project directory
+cd tailadmin-persian
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
+
+Then open your browser and go to `http://localhost:3000`.
+
+## Project Structure
+
+```
+📁 public/          # Static files
+  📁 fonts/         # Project fonts
+  📁 images/        # Project images
+📁 src/
+  📁 app/           # Next.js pages and routing
+  📁 components/    # Reusable components
+    📁 charts/      # Chart components
+    📁 common/      # Common components
+    📁 forms/       # Form components
+    📁 tables/      # Table components
+    📁 ui/          # UI components
+  📁 contexts/      # React contexts
+  📁 hooks/         # Custom hooks
+  📁 locales/       # Translation files
+  📁 types/         # TypeScript type definitions
+  📁 utils/         # Utility functions
+```
+
+</div>

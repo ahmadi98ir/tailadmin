@@ -1,0 +1,70 @@
+TailAdmin Persian Project Structure
+===============================
+
+📁 public/                  # Static files for the application
+  📁 fonts/                 # Font files for Persian and English
+    📄 Vazirmatn-Bold.woff2 # Bold Persian font
+    📄 Vazirmatn-Regular.woff2 # Regular Persian font
+  📁 images/                # Image assets for the application
+    📁 flags/               # Flag icons for country selection
+      📄 usa.svg            # USA flag
+      📄 france.svg         # France flag
+    📁 product/             # Product images for e-commerce
+      📄 product-01.jpg     # Product image placeholder
+      📄 product-02.jpg     # Product image placeholder
+      📄 product-03.jpg     # Product image placeholder
+      📄 product-04.jpg     # Product image placeholder
+      📄 product-05.jpg     # Product image placeholder
+
+📁 src/                     # Source code
+  📁 app/                   # Next.js App Router
+    📁 dashboard/           # Dashboard routes
+      📁 ecommerce/         # eCommerce dashboard page
+        📄 page.tsx         # eCommerce dashboard main page
+      📁 analytics/         # Analytics dashboard (to be implemented)
+      📁 marketing/         # Marketing dashboard (to be implemented)
+      📁 crm/               # CRM dashboard (to be implemented)
+    📄 globals.css          # Global CSS styles
+    📄 layout.tsx           # Root layout component
+    📄 page.tsx             # Main entry point (redirects to dashboard)
+    
+  📁 components/            # Reusable components
+    📁 charts/              # Chart components for data visualization
+      📄 CustomersDemographic.tsx # Customer demographic visualization
+    📁 common/              # Common components
+      📄 DefaultLayout.tsx  # Default layout with sidebar and header
+      📄 Header.tsx         # Application header with language switcher
+      📄 Sidebar.tsx        # Navigation sidebar
+      📄 StatisticsCard.tsx # Statistics card display
+    📁 forms/               # Form components
+    📁 tables/              # Table components 
+      📄 RecentOrders.tsx   # Recent orders table
+    📁 ui/                  # UI components
+  
+  📁 contexts/              # React context providers
+    📄 index.tsx            # Combined context provider
+    📄 SidebarContext.tsx   # Sidebar state management
+    📄 ThemeContext.tsx     # Theme & RTL state management
+    
+  📁 hooks/                 # Custom React hooks
+    📄 useTranslation.ts    # Custom translation hook
+    
+  📁 locales/               # Translation files
+    📁 en/                  # English language
+      📄 common.json        # English translations
+    📁 fa/                  # Persian language
+      📄 common.json        # Persian translations
+    
+  📁 types/                 # TypeScript type definitions
+  
+  📁 utils/                 # Utility functions
+    📄 i18n.ts              # i18n configuration
+
+Configuration Files:
+📄 README.md                # Project documentation
+📄 project-structure.txt    # This project structure document
+📄 tailwind.config.js       # Tailwind CSS configuration
+📄 tsconfig.json            # TypeScript configuration
+📄 jsvectormap.d.ts         # Type definitions for jsvectormap
+📄 next.config.ts           # Next.js configuration
+📄 package.json             # Project dependencies 
