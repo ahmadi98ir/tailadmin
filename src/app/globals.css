@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Theme Transitions */
 * {
@@ -142,5 +144,5 @@ html[dir="ltr"] body {
 
 /* Focus Styles */
 :focus-visible {
-  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-boxdark;
 }
