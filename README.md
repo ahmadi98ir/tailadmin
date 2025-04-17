@@ -1,8 +1,8 @@
-# تیل ادمین - داشبورد مدیریت فارسی با Next.js و Tailwind CSS
+# آرپ وب - داشبورد مدیریت با Next.js و Tailwind CSS
 
 <div dir="rtl">
 
-مدیریت پنل فارسی که با استفاده از Next.js و Tailwind CSS ساخته شده است و از راست به چپ (RTL) پشتیبانی می‌کند. این پروژه یک کپی از [TailAdmin Pro](https://nextjs-demo.tailadmin.com/) است که به فارسی ترجمه شده است.
+پنل مدیریت آرپ وب که با استفاده از Next.js و Tailwind CSS ساخته شده است و از راست به چپ (RTL) پشتیبانی می‌کند. این پروژه یک کپی از [TailAdmin Pro](https://nextjs-demo.tailadmin.com/) است که به فارسی ترجمه شده است.
 
 ## ویژگی‌ها
 
@@ -28,10 +28,10 @@
 
 ```bash
 # کلون کردن مخزن
-git clone https://github.com/your-username/tailadmin-persian.git
+git clone https://github.com/your-username/arp-web.git
 
 # رفتن به دایرکتوری پروژه
-cd tailadmin-persian
+cd arp-web
 
 # نصب وابستگی‌ها
 npm install
@@ -67,9 +67,9 @@ npm run dev
 
 <div dir="ltr">
 
-# TailAdmin - Persian Admin Dashboard with Next.js and Tailwind CSS
+# ARP Web - Admin Dashboard with Next.js and Tailwind CSS
 
-A Persian admin panel built with Next.js and Tailwind CSS with right-to-left (RTL) support. This project is a replica of [TailAdmin Pro](https://nextjs-demo.tailadmin.com/) translated to Persian.
+A modern admin panel built with Next.js and Tailwind CSS with right-to-left (RTL) support.
 
 ## Features
 
@@ -95,10 +95,10 @@ To run the project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/tailadmin-persian.git
+git clone https://github.com/your-username/arp-web.git
 
 # Navigate to the project directory
-cd tailadmin-persian
+cd arp-web
 
 # Install dependencies
 npm install

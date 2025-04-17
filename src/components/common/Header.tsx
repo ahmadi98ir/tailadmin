@@ -183,10 +183,10 @@ const Header = () => {
               className="flex items-center gap-2"
             >
               <span className="hidden h-10 w-10 rounded-full bg-gray-200 text-center text-base font-medium text-black ltr:mr-2 rtl:ml-2 sm:inline-flex sm:items-center sm:justify-center">
-                {isRTL ? 'م' : 'M'}
+                {isRTL ? 'آ' : 'A'}
               </span>
               <span className="hidden font-medium text-black dark:text-white sm:block">
-                {isRTL ? 'مشرف' : 'Musharof'}
+                {isRTL ? 'آرپ وب' : 'ARP Web'}
               </span>
               
               <svg

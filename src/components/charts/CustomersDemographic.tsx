@@ -18,16 +18,16 @@ const CustomersDemographic = ({ className = '' }: CustomersDemographicProps) => 
 
   const countries: CountryData[] = [
     {
-      name: isRTL ? 'ایالات متحده آمریکا' : 'USA',
+      name: isRTL ? 'آرپ وب ایران' : 'ARP Web Iran',
       customers: 2379,
       percentage: 79,
-      flagCode: 'usa',
+      flagCode: 'iran',
     },
     {
-      name: isRTL ? 'فرانسه' : 'France',
+      name: isRTL ? 'آرپ وب بین‌الملل' : 'ARP Web International',
       customers: 589,
       percentage: 23,
-      flagCode: 'france',
+      flagCode: 'global',
     },
   ];
 

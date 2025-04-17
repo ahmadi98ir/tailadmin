@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "تیل ادمین | پنل مدیریت فارسی",
-  description: "پنل مدیریت فارسی با استفاده از Next.js و Tailwind CSS",
+  title: "آرپ وب | پنل مدیریت",
+  description: "پنل مدیریت آرپ وب با استفاده از Next.js و Tailwind CSS",
 };
 
 export default function RootLayout({
