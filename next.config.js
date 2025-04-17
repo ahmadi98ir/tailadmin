@@ -15,6 +15,10 @@ const nextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: false,
+  // حل مشکل دسترسی به فایل‌های استاتیک
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  // اطمینان از اجرا روی همه آدرس‌های شبکه
+  hostname: '0.0.0.0',
 };
 
 module.exports = nextConfig; 

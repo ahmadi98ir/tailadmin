@@ -19,6 +19,8 @@ RUN touch .env
 RUN echo "PORT=3000" >> .env
 RUN echo "NODE_ENV=production" >> .env
 RUN echo "NEXT_PUBLIC_APP_URL=https://arp.ahmadi98.ir" >> .env
+RUN echo "NEXT_PUBLIC_SITE_URL=https://arp.ahmadi98.ir" >> .env
+RUN echo "NEXT_PUBLIC_API_URL=https://arp.ahmadi98.ir/api" >> .env
 
 # اجرای دستور ساخت
 RUN npm run build
@@ -27,8 +29,10 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV=production
-ENV PORT=3000
+ENV NODE_ENV production
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+ENV NEXT_TELEMETRY_DISABLED 1
 
 # کپی فایل‌های مورد نیاز برای اجرا
 COPY --from=builder /app/public ./public
