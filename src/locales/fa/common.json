@@ -95,5 +95,22 @@
   "targetForEachMonth": "هدفی که برای هر ماه تعیین کردید",
   "goodWork": "امروز ۳,۲۸۷ دلار درآمد داشتید، این بیشتر از ماه گذشته است. به کار خوبتان ادامه دهید!",
   "numberOfCustomersByCountry": "تعداد مشتریان بر اساس کشور",
-  "chartWillBeImplementedSoon": "نمودار به زودی پیاده‌سازی خواهد شد"
+  "chartWillBeImplementedSoon": "نمودار به زودی پیاده‌سازی خواهد شد",
+  
+  "userManagement": "مدیریت کاربران",
+  "addUser": "افزودن کاربر",
+  "searchUsers": "جستجوی کاربران",
+  "allRoles": "همه نقش‌ها",
+  "allStatus": "همه وضعیت‌ها",
+  "name": "نام",
+  "role": "نقش",
+  "lastLogin": "آخرین ورود",
+  "actions": "عملیات",
+  "view": "مشاهده",
+  "download": "دانلود",
+  "Active": "فعال",
+  "Inactive": "غیرفعال",
+  "Admin": "مدیر",
+  "Editor": "ویرایشگر",
+  "Viewer": "بیننده"
 } 
