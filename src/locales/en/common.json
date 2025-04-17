@@ -96,5 +96,22 @@
   "targetForEachMonth": "Target you've set for each month",
   "goodWork": "You earn $3287 today, it's higher than last month. Keep up your good work!",
   "numberOfCustomersByCountry": "Number of customer based on country",
-  "chartWillBeImplementedSoon": "Chart will be implemented soon"
+  "chartWillBeImplementedSoon": "Chart will be implemented soon",
+  
+  "userManagement": "User Management",
+  "addUser": "Add User",
+  "searchUsers": "Search Users",
+  "allRoles": "All Roles",
+  "allStatus": "All Status",
+  "name": "Name",
+  "role": "Role",
+  "lastLogin": "Last Login",
+  "actions": "Actions",
+  "view": "View",
+  "download": "Download",
+  "Active": "Active",
+  "Inactive": "Inactive",
+  "Admin": "Admin",
+  "Editor": "Editor",
+  "Viewer": "Viewer"
 } 
