@@ -11,9 +11,9 @@ import { User } from '@/types/User';
 export default function UserListPage() {
   const { t } = useTranslation();
   const [users, setUsers] = useState<User[]>([
-    { id: '1', name: 'John Doe', role: 'Admin', status: 'Active' },
-    { id: '2', name: 'Jane Smith', role: 'Viewer', status: 'Active' },
-    { id: '3', name: 'Bob Johnson', role: 'Viewer', status: 'Inactive' },
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active', lastLogin: '2023-04-15' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'Viewer', status: 'Active', lastLogin: '2023-04-12' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'Viewer', status: 'Inactive', lastLogin: '2023-03-28' },
   ]);
 
   const [selectedRole, setSelectedRole] = useState<string>('all');
