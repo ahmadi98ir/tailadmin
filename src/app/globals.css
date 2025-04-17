@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Theme Transitions */
+* {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
 @font-face {
   font-family: 'Vazirmatn';
   src: url('/fonts/Vazirmatn-Regular.woff2') format('woff2');
@@ -49,9 +57,45 @@ body {
 }
 
 /* RTL Specific Styles */
+html[dir="rtl"] {
+  /* Text alignment */
+  text-align: right;
+  
+  /* Flexbox direction */
+  .flex-row {
+    flex-direction: row-reverse;
+  }
+  
+  /* Margin and padding utilities */
+  .ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+  
+  .me-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Transform utilities */
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+  
+  /* Border radius utilities */
+  .rounded-s {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
+  
+  .rounded-e {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+}
+
 html[dir="rtl"] body {
   font-family: 'Vazirmatn', Arial, Helvetica, sans-serif;
-  text-align: right;
 }
 
 html[dir="ltr"] body {
@@ -76,4 +120,27 @@ html[dir="ltr"] body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(128, 128, 128, 0.8);
+}
+
+/* Loading States */
+.skeleton-loading {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+}
+
+/* Layout Transitions */
+.layout-transition {
+  @apply transition-all duration-300;
+}
+
+.layout-enter {
+  @apply opacity-0;
+}
+
+.layout-enter-active {
+  @apply opacity-100;
+}
+
+/* Focus Styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
 }
