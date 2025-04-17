@@ -2,35 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme Transitions */
-* {
-  transition: background-color 0.3s ease,
-              color 0.3s ease,
-              border-color 0.3s ease,
-              box-shadow 0.3s ease;
-}
-
-@font-face {
-  font-family: 'Vazirmatn';
-  src: url('/fonts/Vazirmatn-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Vazirmatn';
-  src: url('/fonts/Vazirmatn-Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Basic styles */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --boxed-width: 1440px;
-  --sidebar-width: 270px;
 }
 
 html.dark {
@@ -38,98 +13,23 @@ html.dark {
   --foreground: #ededed;
 }
 
-@layer base {
-  body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: 'Vazirmatn', Arial, Helvetica, sans-serif;
-  }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: sans-serif;
 }
 
-/* RTL Specific Styles */
+/* RTL support */
 html[dir="rtl"] {
-  /* Text alignment */
   text-align: right;
 }
 
-html[dir="rtl"] .flex-row {
-  flex-direction: row-reverse;
+/* Simple component classes */
+.btn-primary {
+  @apply bg-primary text-white px-4 py-2 rounded;
 }
 
-/* Margin and padding utilities */
-html[dir="rtl"] .ms-auto {
-  margin-right: auto !important;
-  margin-left: 0 !important;
-}
-
-html[dir="rtl"] .me-auto {
-  margin-left: auto !important;
-  margin-right: 0 !important;
-}
-
-/* Transform utilities */
-html[dir="rtl"] .rotate-180 {
-  transform: rotate(180deg);
-}
-
-/* Border radius utilities */
-html[dir="rtl"] .rounded-s {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-
-html[dir="rtl"] .rounded-e {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-html[dir="rtl"] body {
-  font-family: 'Vazirmatn', Arial, Helvetica, sans-serif;
-}
-
-html[dir="ltr"] body {
-  font-family: sans-serif, Arial, Helvetica, sans-serif;
-  text-align: left;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(128, 128, 128, 0.5);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(128, 128, 128, 0.8);
-}
-
-/* Loading States */
-.skeleton-loading {
-  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
-}
-
-/* Layout Transitions */
-.layout-transition {
-  @apply transition-all duration-300;
-}
-
-.layout-enter {
-  @apply opacity-0;
-}
-
-.layout-enter-active {
-  @apply opacity-100;
-}
-
-/* Focus Styles */
+/* Focus styles */
 :focus-visible {
-  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-boxdark;
+  @apply outline-none ring-2 ring-primary;
 }
