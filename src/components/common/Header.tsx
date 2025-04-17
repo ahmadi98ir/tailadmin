@@ -9,7 +9,7 @@ import Link from 'next/link';
 const Header = () => {
   const { theme, toggleTheme, isRTL, toggleDirection } = useTheme();
   const { toggleSidebar } = useSidebar();
-  const { t, changeLanguage } = useTranslation();
+  const { t, changeLanguage, isChangingLanguage } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleToggleDropdown = () => {
@@ -31,9 +31,9 @@ const Header = () => {
     };
   }, []);
 
-  const handleLanguageChange = () => {
+  const handleLanguageChange = async () => {
+    await changeLanguage(isRTL ? 'en' : 'fa');
     toggleDirection();
-    changeLanguage(isRTL ? 'en' : 'fa');
   };
 
   return (
@@ -44,6 +44,8 @@ const Header = () => {
           <button
             onClick={toggleSidebar}
             className="inline-flex items-center justify-center rounded-sm bg-white p-2 text-body hover:bg-gray-200 dark:bg-boxdark dark:text-bodydark dark:hover:bg-boxdark-2"
+            aria-label={t('toggleSidebar')}
+            aria-expanded="false"
           >
             <svg
               width="24"
@@ -52,6 +54,8 @@ const Header = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
+              aria-hidden="true"
+              role="img"
             >
               <path
                 d="M3 12H21"
@@ -77,7 +81,11 @@ const Header = () => {
             </svg>
           </button>
           {/* Logo */}
-          <Link className="block flex-shrink-0 lg:hidden" href="/">
+          <Link 
+            className="block flex-shrink-0 lg:hidden" 
+            href="/"
+            aria-label={t('home')}
+          >
             <span className="text-xl font-bold">TailAdmin</span>
           </Link>
         </div>
@@ -124,6 +132,8 @@ const Header = () => {
               <button
                 onClick={toggleTheme}
                 className="inline-flex items-center justify-center rounded-sm bg-gray-100 p-2 text-body hover:bg-gray-200 dark:bg-boxdark-2 dark:text-bodydark dark:hover:bg-boxdark"
+                aria-label={t('toggleTheme')}
+                aria-pressed={theme === 'dark'}
               >
                 {theme === 'dark' ? (
                   <svg
@@ -132,13 +142,11 @@ const Header = () => {
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    role="img"
                   >
                     <path
-                      d="M10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15ZM10 13.3333C10.8841 13.3333 11.7319 12.9821 12.357 12.357C12.9821 11.7319 13.3333 10.8841 13.3333 10C13.3333 9.11595 12.9821 8.2681 12.357 7.64298C11.7319 7.01786 10.8841 6.66667 10 6.66667C9.11595 6.66667 8.2681 7.01786 7.64298 7.64298C7.01786 8.2681 6.66667 9.11595 6.66667 10C6.66667 10.8841 7.01786 11.7319 7.64298 12.357C8.2681 12.9821 9.11595 13.3333 10 13.3333Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M9.09091 0.909092C9.09091 0.407014 9.49792 0 10 0C10.5021 0 10.9091 0.407014 10.9091 0.909092V1.81818C10.9091 2.32026 10.5021 2.72727 10 2.72727C9.49792 2.72727 9.09091 2.32026 9.09091 1.81818V0.909092ZM9.09091 18.1818C9.09091 17.6797 9.49792 17.2727 10 17.2727C10.5021 17.2727 10.9091 17.6797 10.9091 18.1818V19.0909C10.9091 19.593 10.5021 20 10 20C9.49792 20 9.09091 19.593 9.09091 19.0909V18.1818ZM2.92909 4.21455C2.57412 3.85958 2.57412 3.28406 2.92909 2.92909C3.28406 2.57412 3.85958 2.57412 4.21455 2.92909L4.85727 3.57182C5.21224 3.92679 5.21224 4.5023 4.85727 4.85727C4.5023 5.21224 3.92679 5.21224 3.57182 4.85727L2.92909 4.21455ZM15.1427 16.4282C14.7878 16.0732 14.7878 15.4977 15.1427 15.1427C15.4977 14.7878 16.0732 14.7878 16.4282 15.1427L17.0709 15.7855C17.4259 16.1404 17.4259 16.7159 17.0709 17.0709C16.7159 17.4259 16.1404 17.4259 15.7855 17.0709L15.1427 16.4282ZM0.909092 9.09091C0.407014 9.09091 0 9.49792 0 10C0 10.5021 0.407014 10.9091 0.909092 10.9091H1.81818C2.32026 10.9091 2.72727 10.5021 2.72727 10C2.72727 9.49792 2.32026 9.09091 1.81818 9.09091H0.909092ZM18.1818 9.09091C17.6797 9.09091 17.2727 9.49792 17.2727 10C17.2727 10.5021 17.6797 10.9091 18.1818 10.9091H19.0909C19.593 10.9091 20 10.5021 20 10C20 9.49792 19.593 9.09091 19.0909 9.09091H18.1818ZM4.85727 15.1427C5.21224 14.7878 5.21224 14.2122 4.85727 13.8573C4.5023 13.5023 3.92679 13.5023 3.57182 13.8573L2.92909 14.5C2.57412 14.855 2.57412 15.4305 2.92909 15.7855C3.28406 16.1404 3.85958 16.1404 4.21455 15.7855L4.85727 15.1427ZM17.0709 2.92909C17.4259 3.28406 17.4259 3.85958 17.0709 4.21455L16.4282 4.85727C16.0732 5.21224 15.4977 5.21224 15.1427 4.85727C14.7878 4.5023 14.7878 3.92679 15.1427 3.57182L15.7855 2.92909C16.1404 2.57412 16.7159 2.57412 17.0709 2.92909Z"
+                      d="M10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15Z"
                       fill="currentColor"
                     />
                   </svg>
@@ -149,15 +157,18 @@ const Header = () => {
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    role="img"
                   >
                     <path
-                      d="M10 3.07869C8.05878 3.07869 6.26622 3.8554 4.92602 5.19561C3.58581 6.53582 2.8091 8.32838 2.8091 10.2696C2.8091 12.2108 3.58581 14.0034 4.92602 15.3436C6.26622 16.6838 8.05878 17.4605 10 17.4605C10.9186 17.4605 11.8273 17.2691 12.6644 16.9004C13.5015 16.5316 14.2487 15.9934 14.8586 15.3212C15.4685 14.6491 15.9364 13.8478 16.2247 12.9759C16.513 12.104 16.6151 11.1871 16.5245 10.2819C16.4339 9.37674 16.1525 8.49904 15.6994 7.70471C15.2464 6.91038 14.6317 6.21638 13.8924 5.66899C13.153 5.1216 12.3052 4.73392 11.4089 4.52996C10.5127 4.32599 9.58639 4.3103 8.68482 4.48377"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
+                      d="M17.8099 13.7101C17.5499 13.7701 17.2799 13.8101 16.9999 13.8101C14.1399 13.8101 11.8099 11.4801 11.8099 8.62006C11.8099 6.78006 12.7599 5.16006 14.2099 4.20006C14.4199 4.05006 14.4799 3.77006 14.3499 3.54006C14.2199 3.31006 13.9399 3.21006 13.7099 3.34006C10.5899 4.81006 8.58994 8.05006 8.58994 11.6301C8.58994 15.9201 12.0699 19.4001 16.3599 19.4001C17.9499 19.4001 19.4499 18.9701 20.7499 18.1701C20.9799 18.0401 21.0699 17.7601 20.9399 17.5301C20.8099 17.3001 20.5299 17.2101 20.2999 17.3401C19.6999 17.7101 19.0499 17.9901 18.3599 18.1701C18.1799 18.0401 17.9999 17.8901 17.8099 17.7301V13.7101Z"
+                      fill="currentColor"
                     />
                   </svg>
                 )}
+                <span className="sr-only">
+                  {theme === 'dark' ? t('switchToLightMode') : t('switchToDarkMode')}
+                </span>
               </button>
             </li>
             
@@ -165,13 +176,22 @@ const Header = () => {
             <li>
               <button
                 onClick={handleLanguageChange}
-                className="inline-flex items-center justify-center rounded-sm bg-gray-100 p-2 text-body hover:bg-gray-200 dark:bg-boxdark-2 dark:text-bodydark dark:hover:bg-boxdark"
+                disabled={isChangingLanguage}
+                className={`
+                  inline-flex items-center justify-center rounded-sm bg-gray-100 p-2 text-body 
+                  hover:bg-gray-200 dark:bg-boxdark-2 dark:text-bodydark dark:hover:bg-boxdark
+                  transition-opacity duration-200
+                  ${isChangingLanguage ? 'opacity-50 cursor-not-allowed' : ''}
+                `}
+                aria-label={t('changeLanguage')}
+                aria-busy={isChangingLanguage}
               >
-                {isRTL ? (
-                  <span className="text-sm font-medium">EN</span>
-                ) : (
-                  <span className="text-sm font-medium">فا</span>
-                )}
+                <span className="text-sm font-medium">
+                  {isChangingLanguage ? '...' : (isRTL ? 'EN' : 'فا')}
+                </span>
+                <span className="sr-only">
+                  {isRTL ? t('switchToEnglish') : t('switchToPersian')}
+                </span>
               </button>
             </li>
           </ul>
