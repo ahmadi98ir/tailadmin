@@ -296,6 +296,16 @@ const Header = () => {
     inputRef.current?.focus();
   };
 
+  const handleLogout = async () => {
+    try {
+      // Here you would typically call your logout API
+      // await logout();
+      router.push('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
   return (
     <header className="fixed top-0 z-50 w-full bg-white dark:bg-gray-800 shadow-sm">
       <div className="flex items-center justify-between h-16 px-4">
@@ -633,7 +643,7 @@ const Header = () => {
                   {t('profile')}
                 </Link>
                 <button
-                  onClick={() => {/* Handle logout */}}
+                  onClick={handleLogout}
                   className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-red-600 dark:text-red-400"
                 >
                   <LogoutIcon className="w-4 h-4 mr-2" />
@@ -683,7 +693,7 @@ const Header = () => {
                   {t('settings')}
                 </Link>
                 <button
-                  onClick={() => {/* Handle logout */}}
+                  onClick={handleLogout}
                   className="flex items-center w-full px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-red-600 dark:text-red-400"
                 >
                   <LogoutIcon className="w-5 h-5 mr-2" />
