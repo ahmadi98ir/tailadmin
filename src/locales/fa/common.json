@@ -99,9 +99,10 @@
   
   "userManagement": "مدیریت کاربران",
   "addUser": "افزودن کاربر",
+  "edit": "ویرایش",
   "searchUsers": "جستجوی کاربران",
   "allRoles": "همه نقش‌ها",
-  "allStatus": "همه وضعیت‌ها",
+  "allStatuses": "همه وضعیت‌ها",
   "name": "نام",
   "role": "نقش",
   "lastLogin": "آخرین ورود",
