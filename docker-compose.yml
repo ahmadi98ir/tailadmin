@@ -14,6 +14,11 @@ services:
       - NODE_ENV=production
       - PORT=3000
       - NEXT_PUBLIC_APP_URL=https://arp.ahmadi98.ir
+      - NEXT_PUBLIC_SITE_URL=https://arp.ahmadi98.ir
+      - NEXT_PUBLIC_API_URL=https://arp.ahmadi98.ir/api
+      - NEXT_PUBLIC_BASE_PATH=
+    volumes:
+      - ./public:/app/public
     networks:
       - app-network
     healthcheck:
