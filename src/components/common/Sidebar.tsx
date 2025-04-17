@@ -215,6 +215,34 @@ const Sidebar = ({ className = '' }: SidebarProps) => {
                         </span>
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        href="/dashboard/stocks"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/dashboard/stocks' && 'text-white'
+                        }`}
+                      >
+                        {t('stocks')}
+                        <span className="absolute right-4 flex gap-1 rounded">
+                          <span className="rounded bg-primary px-2 py-1 text-xs font-medium text-white">New</span>
+                          <span className="rounded bg-primary px-2 py-1 text-xs font-medium text-white">Pro</span>
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/dashboard/saas"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/dashboard/saas' && 'text-white'
+                        }`}
+                      >
+                        {t('saas')}
+                        <span className="absolute right-4 flex gap-1 rounded">
+                          <span className="rounded bg-primary px-2 py-1 text-xs font-medium text-white">New</span>
+                          <span className="rounded bg-primary px-2 py-1 text-xs font-medium text-white">Pro</span>
+                        </span>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -271,6 +299,263 @@ const Sidebar = ({ className = '' }: SidebarProps) => {
                   </svg>
                   {t('profile')}
                 </Link>
+              </li>
+
+              {/* Task Menu */}
+              <li>
+                <button
+                  onClick={() => toggleMenu('task')}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('tasks') && 'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.43425 7.5093H2.278C2.44675 7.5093 2.55925 7.3968 2.58737 7.31243L2.98112 6.32805H5.90612L6.27175 7.31243C6.328 7.48118 6.46862 7.5093 6.58112 7.5093H7.453C7.76237 7.48118 7.87487 7.25618 7.76237 7.03118L5.428 1.4093C5.37175 1.26868 5.3155 1.15618 5.14675 1.15618H3.88112C3.76862 1.15618 3.59987 1.2968 3.57175 1.4093L1.153 7.08743C1.0405 7.2843 1.20925 7.5093 1.43425 7.5093ZM4.47175 2.98118L5.3155 5.23118H3.59987L4.47175 2.98118Z"
+                      fill=""
+                    />
+                    <path
+                      d="M10.1249 2.5031H16.8749C17.2124 2.5031 17.5218 2.22185 17.5218 1.85623C17.5218 1.4906 17.2405 1.20935 16.8749 1.20935H10.1249C9.7874 1.20935 9.47803 1.4906 9.47803 1.85623C9.47803 2.22185 9.75928 2.5031 10.1249 2.5031Z"
+                      fill=""
+                    />
+                    <path
+                      d="M16.8749 6.21558H10.1249C9.7874 6.21558 9.47803 6.49683 9.47803 6.86245C9.47803 7.22808 9.75928 7.50933 10.1249 7.50933H16.8749C17.2124 7.50933 17.5218 7.22808 17.5218 6.86245C17.5218 6.49683 17.2124 6.21558 16.8749 6.21558Z"
+                      fill=""
+                    />
+                    <path
+                      d="M16.875 11.1656H1.77187C1.43438 11.1656 1.125 11.4469 1.125 11.8125C1.125 12.1781 1.40625 12.4594 1.77187 12.4594H16.875C17.2125 12.4594 17.5219 12.1781 17.5219 11.8125C17.5219 11.4469 17.2125 11.1656 16.875 11.1656Z"
+                      fill=""
+                    />
+                    <path
+                      d="M16.875 16.1156H1.77187C1.43438 16.1156 1.125 16.3969 1.125 16.7625C1.125 17.1281 1.40625 17.4094 1.77187 17.4094H16.875C17.2125 17.4094 17.5219 17.1281 17.5219 16.7625C17.5219 16.3969 17.2125 16.1156 16.875 16.1156Z"
+                      fill="white"
+                    />
+                  </svg>
+                  {t('task')}
+                  <svg
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                      menuItems.task && 'rotate-180'
+                    }`}
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu */}
+                <div
+                  className={`translate transform overflow-hidden ${
+                    menuItems.task ? 'block' : 'hidden'
+                  }`}
+                >
+                  <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                    <li>
+                      <Link
+                        href="/tasks/list"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/tasks/list' && 'text-white'
+                        }`}
+                      >
+                        {t('list')}
+                        <span className="absolute right-4 block rounded bg-primary px-2 py-1 text-xs font-medium text-white">
+                          Pro
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/tasks/kanban"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/tasks/kanban' && 'text-white'
+                        }`}
+                      >
+                        {t('kanban')}
+                        <span className="absolute right-4 block rounded bg-primary px-2 py-1 text-xs font-medium text-white">
+                          Pro
+                        </span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              {/* Forms Menu */}
+              <li>
+                <button
+                  onClick={() => toggleMenu('forms')}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('forms') && 'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.43425 4.2345H12.0787C12.4162 4.2345 12.7068 3.94387 12.7068 3.60637C12.7068 3.26887 12.4162 2.97825 12.0787 2.97825H1.43425C1.09675 2.97825 0.806128 3.26887 0.806128 3.60637C0.806128 3.94387 1.09675 4.2345 1.43425 4.2345Z"
+                      fill=""
+                    />
+                    <path
+                      d="M1.43425 7.53214H12.0787C12.4162 7.53214 12.7068 7.24152 12.7068 6.90402C12.7068 6.56652 12.4162 6.2759 12.0787 6.2759H1.43425C1.09675 6.2759 0.806128 6.56652 0.806128 6.90402C0.806128 7.24152 1.09675 7.53214 1.43425 7.53214Z"
+                      fill=""
+                    />
+                    <path
+                      d="M1.43425 10.8023H12.0787C12.4162 10.8023 12.7068 10.5117 12.7068 10.1742C12.7068 9.83669 12.4162 9.54607 12.0787 9.54607H1.43425C1.09675 9.54607 0.806128 9.83669 0.806128 10.1742C0.806128 10.5117 1.09675 10.8023 1.43425 10.8023Z"
+                      fill=""
+                    />
+                    <path
+                      d="M1.43425 14.0872H7.31244C7.64994 14.0872 7.94056 13.7966 7.94056 13.4591C7.94056 13.1216 7.64994 12.831 7.31244 12.831H1.43425C1.09675 12.831 0.806128 13.1216 0.806128 13.4591C0.806128 13.7966 1.09675 14.0872 1.43425 14.0872Z"
+                      fill=""
+                    />
+                    <path
+                      d="M15.4058 9.54607C14.0507 9.54607 12.9573 10.6394 12.9573 11.9945C12.9573 13.3497 14.0507 14.443 15.4058 14.443C16.761 14.443 17.8543 13.3497 17.8543 11.9945C17.8543 10.6394 16.761 9.54607 15.4058 9.54607ZM15.4058 13.1868C14.7428 13.1868 14.2135 12.6575 14.2135 11.9945C14.2135 11.3316 14.7428 10.8023 15.4058 10.8023C16.0687 10.8023 16.598 11.3316 16.598 11.9945C16.598 12.6575 16.0687 13.1868 15.4058 13.1868Z"
+                      fill=""
+                    />
+                  </svg>
+                  {t('forms')}
+                  <svg
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                      menuItems.forms && 'rotate-180'
+                    }`}
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu */}
+                <div
+                  className={`translate transform overflow-hidden ${
+                    menuItems.forms ? 'block' : 'hidden'
+                  }`}
+                >
+                  <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                    <li>
+                      <Link
+                        href="/forms/form-elements"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/forms/form-elements' && 'text-white'
+                        }`}
+                      >
+                        {t('formElements')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/forms/form-layout"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/forms/form-layout' && 'text-white'
+                        }`}
+                      >
+                        {t('formLayout')}
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              {/* Tables Menu */}
+              <li>
+                <button
+                  onClick={() => toggleMenu('tables')}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  <svg
+                    className="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15.7065 2.25678H2.29284C1.46761 2.25678 0.79321 2.93117 0.79321 3.75641V14.2561C0.79321 15.0813 1.46761 15.7557 2.29284 15.7557H15.7065C16.5317 15.7557 17.2061 15.0813 17.2061 14.2561V3.75641C17.2061 2.93117 16.5317 2.25678 15.7065 2.25678ZM2.29284 3.55084H15.7065C15.8173 3.55084 15.9121 3.64568 15.9121 3.75641V6.67854H2.08847V3.75641C2.08847 3.64568 2.18321 3.55084 2.29284 3.55084ZM2.29284 14.4616V8.15678H8.50065V14.6344H2.29284C2.18321 14.6344 2.08847 14.5396 2.08847 14.4289V14.4616ZM15.7065 14.4616C15.8173 14.4616 15.9121 14.3667 15.9121 14.2561V8.15678H9.70702V14.6344H15.7065V14.4616Z"
+                      fill=""
+                    />
+                  </svg>
+                  {t('tables')}
+                  <svg
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                      menuItems.tables && 'rotate-180'
+                    }`}
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu */}
+                <div
+                  className={`translate transform overflow-hidden ${
+                    menuItems.tables ? 'block' : 'hidden'
+                  }`}
+                >
+                  <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                    <li>
+                      <Link
+                        href="/tables/basic-tables"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/tables/basic-tables' && 'text-white'
+                        }`}
+                      >
+                        {t('basicTables')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/tables/data-tables"
+                        className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                          pathname === '/tables/data-tables' && 'text-white'
+                        }`}
+                      >
+                        {t('dataTables')}
+                        <span className="absolute right-4 block rounded bg-primary px-2 py-1 text-xs font-medium text-white">
+                          Pro
+                        </span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>

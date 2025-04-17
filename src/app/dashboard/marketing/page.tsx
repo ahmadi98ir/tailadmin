@@ -7,8 +7,8 @@ import { useTranslation } from '@/hooks/useTranslation';
 export default function MarketingDashboard() {
   const { t } = useTranslation();
 
-  // Icon for campaign stat
-  const campaignIcon = (
+  // Campaigns statistics
+  const campaignsIcon = (
     <svg
       className="fill-primary dark:fill-white"
       width="22"
@@ -28,7 +28,32 @@ export default function MarketingDashboard() {
     </svg>
   );
 
-  // Icon for ROI stat
+  // Leads statistics
+  const leadsIcon = (
+    <svg
+      className="fill-primary dark:fill-white"
+      width="22"
+      height="18"
+      viewBox="0 0 22 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7.18418 8.03751C9.31543 8.03751 11.0686 6.35313 11.0686 4.25626C11.0686 2.15938 9.31543 0.475006 7.18418 0.475006C5.05293 0.475006 3.2998 2.15938 3.2998 4.25626C3.2998 6.35313 5.05293 8.03751 7.18418 8.03751ZM7.18418 2.05626C8.45605 2.05626 9.52168 3.05313 9.52168 4.29063C9.52168 5.52813 8.49043 6.52501 7.18418 6.52501C5.87793 6.52501 4.84668 5.52813 4.84668 4.29063C4.84668 3.05313 5.9123 2.05626 7.18418 2.05626Z"
+        fill=""
+      />
+      <path
+        d="M15.8124 9.6875C17.6687 9.6875 19.1468 8.24375 19.1468 6.42188C19.1468 4.6 17.6343 3.15625 15.8124 3.15625C13.9905 3.15625 12.478 4.6 12.478 6.42188C12.478 8.24375 13.9905 9.6875 15.8124 9.6875ZM15.8124 4.7375C16.8093 4.7375 17.5999 5.49375 17.5999 6.45625C17.5999 7.41875 16.8093 8.175 15.8124 8.175C14.8155 8.175 14.0249 7.41875 14.0249 6.45625C14.0249 5.49375 14.8155 4.7375 15.8124 4.7375Z"
+        fill=""
+      />
+      <path
+        d="M15.9843 10.0313H15.6749C14.6437 10.0313 13.6468 10.3406 12.7874 10.8563C11.8593 9.61876 10.3812 8.79376 8.73115 8.79376H5.67178C2.85303 8.82814 0.618652 11.0625 0.618652 13.8469V16.3219C0.618652 16.975 1.13428 17.4906 1.7874 17.4906H20.2468C20.8999 17.4906 21.4499 16.9406 21.4499 16.2875V13.8469C21.4155 11.7844 19.0468 10.0313 15.9843 10.0313ZM2.16553 15.9438V13.8469C2.16553 11.9219 3.74678 10.3406 5.67178 10.3406H8.73115C10.6562 10.3406 12.2374 11.9219 12.2374 13.8469V15.9438H2.16553V15.9438ZM19.8687 15.9438H13.7499V13.8469C13.7499 13.2969 13.6468 12.7469 13.4749 12.2313C14.0937 11.7844 14.8499 11.5781 15.6405 11.5781H15.9499C18.0812 11.5781 19.8343 12.7469 19.8343 13.8469V15.9438H19.8687Z"
+        fill=""
+      />
+    </svg>
+  );
+
+  // ROI statistics
   const roiIcon = (
     <svg
       className="fill-primary dark:fill-white"
@@ -57,47 +82,22 @@ export default function MarketingDashboard() {
     </svg>
   );
 
-  // Icon for CTR stat
-  const ctrIcon = (
+  // Conversion Rate statistics
+  const conversionRateIcon = (
     <svg
       className="fill-primary dark:fill-white"
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
+      width="18"
+      height="16"
+      viewBox="0 0 18 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M17.6687 1.44374C17.1187 0.893744 16.4312 0.618744 15.675 0.618744H7.42498C6.25623 0.618744 5.25935 1.58124 5.25935 2.78437V4.12499H4.29685C3.88435 4.12499 3.64998 4.62499 3.90935 4.94999L6.72185 8.19374C6.89685 8.40624 7.19998 8.40624 7.37498 8.19374L10.1875 4.94999C10.4469 4.62499 10.2125 4.12499 9.79998 4.12499H8.83748V2.78437C8.83748 2.53437 9.01873 2.32499 9.26873 2.32499H15.675C16.0875 2.32499 16.3156 2.47187 16.4594 2.61562C16.6312 2.78437 16.7187 3.01562 16.7187 3.23124C16.7187 3.86874 16.2031 4.12499 15.675 4.12499H14.1188C13.7062 4.12499 13.3969 4.43437 13.3969 4.84687C13.3969 5.25937 13.7062 5.56874 14.1188 5.56874H15.675C17.0844 5.56874 18.1625 4.53437 18.1625 3.23124C18.1625 2.49374 17.9906 1.91562 17.6687 1.44374Z"
+        d="M15.8391 0.0710021H2.1608C1.10545 0.0710021 0.2243 0.95214 0.2243 2.00749V13.9926C0.2243 15.048 1.10545 15.9291 2.1608 15.9291H15.8391C16.8945 15.9291 17.7756 15.048 17.7756 13.9926V2.00749C17.7756 0.95214 16.8945 0.0710021 15.8391 0.0710021ZM2.1608 1.54257H15.8391C16.0857 1.54257 16.3041 1.76097 16.3041 2.00749V4.76976H1.69587V2.00749C1.69587 1.76097 1.91424 1.54257 2.1608 1.54257ZM15.8391 14.4576H2.1608C1.91424 14.4576 1.69587 14.2392 1.69587 13.9926V6.24133H16.3041V13.9926C16.3041 14.2392 16.0857 14.4576 15.8391 14.4576Z"
         fill=""
       />
       <path
-        d="M14.1188 6.84374H3.05935C2.70935 6.84374 2.36873 6.99374 2.13435 7.25624C1.89998 7.51874 1.77185 7.89999 1.83748 8.24999C2.26873 10.6594 3.70935 13.0719 6.27185 14.4031C6.36248 14.45 6.44998 14.4937 6.53435 14.5344C6.41248 14.775 6.15623 14.9437 5.85623 14.9437H3.95935C3.54685 14.9437 3.23748 15.2531 3.23748 15.6656C3.23748 16.0781 3.54685 16.3875 3.95935 16.3875H9.26873C9.64998 16.3875 9.71248 16.3406 10.1 16.3406C10.5125 16.3406 10.8219 16.0312 10.8219 15.6187C10.8219 15.2062 10.5125 14.8969 10.1 14.8969C9.57811 14.8969 9.25935 14.5594 9.25935 14.0687C9.25935 13.6562 9.57185 13.2219 10.0156 13.2219C10.4594 13.2219 10.7719 13.5562 10.7719 14.0687C10.7719 14.4812 11.0812 14.7906 11.4938 14.7906C11.9063 14.7906 12.2156 14.4812 12.2156 14.0687C12.2156 13.1344 11.5062 12.075 10.0156 12.075C8.70935 12.075 7.81873 12.9219 7.81873 14.0687C7.81873 14.1219 7.82498 14.175 7.83123 14.2312C7.73123 14.2031 7.63435 14.1719 7.5375 14.1375C5.53435 13.1 4.34373 11.175 3.9875 9.26249C3.97498 9.16249 4.01248 9.08749 4.05935 9.03124C4.10623 8.97499 4.19998 8.90624 4.30623 8.90624H14.1313C14.2844 8.90624 14.375 8.96874 14.4312 9.02499C14.5 9.09374 14.5469 9.18124 14.5313 9.28124C14.3844 10.0375 14.0719 10.7469 13.6594 11.375C13.475 11.6469 13.525 12.0094 13.7969 12.1938C13.8906 12.2531 14 12.2812 14.1031 12.2812C14.3031 12.2812 14.4938 12.1844 14.5938 12.0031C15.0844 11.2469 15.4562 10.3937 15.6375 9.47499C15.7219 8.94999 15.5813 8.42499 15.2531 8.03749C14.95 7.65934 14.55 7.44374 14.1094 7.44374H14.1219L14.1188 6.84374Z"
-        fill=""
-      />
-    </svg>
-  );
-
-  // Icon for conversion stat
-  const conversionIcon = (
-    <svg
-      className="fill-primary dark:fill-white"
-      width="22"
-      height="18"
-      viewBox="0 0 22 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M7.18418 8.03751C9.31543 8.03751 11.0686 6.35313 11.0686 4.25626C11.0686 2.15938 9.31543 0.475006 7.18418 0.475006C5.05293 0.475006 3.2998 2.15938 3.2998 4.25626C3.2998 6.35313 5.05293 8.03751 7.18418 8.03751ZM7.18418 2.05626C8.45605 2.05626 9.52168 3.05313 9.52168 4.29063C9.52168 5.52813 8.49043 6.52501 7.18418 6.52501C5.87793 6.52501 4.84668 5.52813 4.84668 4.29063C4.84668 3.05313 5.9123 2.05626 7.18418 2.05626Z"
-        fill=""
-      />
-      <path
-        d="M15.8124 9.6875C17.6687 9.6875 19.1468 8.24375 19.1468 6.42188C19.1468 4.6 17.6343 3.15625 15.8124 3.15625C13.9905 3.15625 12.478 4.6 12.478 6.42188C12.478 8.24375 13.9905 9.6875 15.8124 9.6875ZM15.8124 4.7375C16.8093 4.7375 17.5999 5.49375 17.5999 6.45625C17.5999 7.41875 16.8093 8.175 15.8124 8.175C14.8155 8.175 14.0249 7.41875 14.0249 6.45625C14.0249 5.49375 14.8155 4.7375 15.8124 4.7375Z"
-        fill=""
-      />
-      <path
-        d="M15.9843 10.0313H15.6749C14.6437 10.0313 13.6468 10.3406 12.7874 10.8563C11.8593 9.61876 10.3812 8.79376 8.73115 8.79376H5.67178C2.85303 8.82814 0.618652 11.0625 0.618652 13.8469V16.3219C0.618652 16.975 1.13428 17.4906 1.7874 17.4906H20.2468C20.8999 17.4906 21.4499 16.9406 21.4499 16.2875V13.8469C21.4155 11.7844 19.0312 10.0313 15.9843 10.0313ZM2.16553 15.9438V13.8469C2.16553 11.9219 3.74678 10.3406 5.67178 10.3406H8.73115C10.6562 10.3406 12.2374 11.9219 12.2374 13.8469V15.9438H2.16553V15.9438ZM19.8687 15.9438H13.7499V13.8469C13.7499 13.2969 13.6468 12.7469 13.4749 12.2313C14.0937 11.9219 14.8499 11.7844 15.6405 11.7844H15.9499C18.0812 11.7844 19.8343 12.9188 19.8343 13.8469V15.9438H19.8687Z"
+        d="M7.11341 12.1192H5.37355C5.1732 12.1192 5.01025 12.2821 5.01025 12.4825V13.5123C5.01025 13.7126 5.1732 13.8756 5.37355 13.8756H7.11341C7.31374 13.8756 7.4767 13.7126 7.4767 13.5123V12.4825C7.4767 12.2821 7.31374 12.1192 7.11341 12.1192Z"
         fill=""
       />
     </svg>
@@ -105,53 +105,46 @@ export default function MarketingDashboard() {
 
   return (
     <DefaultLayout>
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-black dark:text-white">
-          {t('marketingDashboard')}
-        </h2>
-        <p className="text-body-color">{t('marketingOverview')}</p>
-      </div>
-
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        {/* Active Campaigns */}
+        {/* Active Campaigns Card */}
         <StatisticsCard
           title={t('activeCampaigns')}
-          count="7"
-          percentageChange="16.5%"
+          count="24"
+          percentageChange="19.5%"
           isIncreased={true}
-          icon={campaignIcon}
+          icon={campaignsIcon}
         />
         
-        {/* ROI */}
+        {/* Leads Card */}
         <StatisticsCard
-          title={t('marketingROI')}
-          count="238%"
-          percentageChange="12.8%"
+          title={t('leads')}
+          count="436"
+          percentageChange="12.4%"
+          isIncreased={true}
+          icon={leadsIcon}
+        />
+
+        {/* ROI Card */}
+        <StatisticsCard
+          title={t('roi')}
+          count="267%"
+          percentageChange="8.2%"
           isIncreased={true}
           icon={roiIcon}
         />
 
-        {/* CTR */}
-        <StatisticsCard
-          title={t('clickThroughRate')}
-          count="4.8%"
-          percentageChange="1.2%"
-          isIncreased={true}
-          icon={ctrIcon}
-        />
-
-        {/* Conversion Rate */}
+        {/* Conversion Rate Card */}
         <StatisticsCard
           title={t('conversionRate')}
-          count="2.9%"
-          percentageChange="0.5%"
+          count="5.47%"
+          percentageChange="3.2%"
           isIncreased={true}
-          icon={conversionIcon}
+          icon={conversionRateIcon}
         />
       </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        {/* Marketing Performance Chart */}
+        {/* Campaign Performance Chart */}
         <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
           <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
             <div className="flex w-full flex-wrap gap-3 sm:gap-5">
@@ -160,39 +153,23 @@ export default function MarketingDashboard() {
                   <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
                 </span>
                 <div className="w-full">
-                  <p className="font-semibold text-primary">{t('emailCampaigns')}</p>
-                </div>
-              </div>
-              <div className="flex min-w-47.5">
-                <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-secondary">
-                  <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-secondary"></span>
-                </span>
-                <div className="w-full">
-                  <p className="font-semibold text-secondary">{t('socialMediaAds')}</p>
-                </div>
-              </div>
-              <div className="flex min-w-47.5">
-                <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-success">
-                  <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-success"></span>
-                </span>
-                <div className="w-full">
-                  <p className="font-semibold text-success">{t('searchAds')}</p>
+                  <p className="font-semibold text-primary">{t('campaignPerformance')}</p>
                 </div>
               </div>
             </div>
             <div className="flex w-full max-w-45 justify-end">
               <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
                 <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
-                  {t('month')}
+                  {t('viewMore')}
                 </button>
                 <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-                  {t('year')}
+                  {t('delete')}
                 </button>
               </div>
             </div>
           </div>
 
-          <div className="h-[300px] w-full">
+          <div className="h-[250px] w-full">
             {/* Chart placeholder */}
             <div className="flex h-full items-center justify-center text-center">
               <div>
@@ -205,71 +182,79 @@ export default function MarketingDashboard() {
           </div>
         </div>
 
-        {/* Active Campaigns List */}
+        {/* Top Channels */}
         <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
           <div className="mb-4 justify-between gap-4 sm:flex">
             <div>
               <h4 className="text-xl font-semibold text-black dark:text-white">
-                {t('topCampaigns')}
+                {t('topChannels')}
               </h4>
+              <p className="text-sm text-body-color">
+                {t('bestPerformingChannels')}
+              </p>
+            </div>
+            <div>
+              <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
+                <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
+                  {t('viewMore')}
+                </button>
+                <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+                  {t('delete')}
+                </button>
+              </div>
             </div>
           </div>
 
           <div className="mb-2">
             <div className="flex flex-col gap-4">
-              {/* Campaign item 1 */}
-              <div className="flex items-center justify-between border-b border-stroke pb-4 dark:border-strokedark">
-                <div>
-                  <h5 className="text-sm font-medium">{t('summerPromotion')}</h5>
-                  <p className="text-xs text-body-color">{t('email')}</p>
-                </div>
-                <span className="rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  {t('active')}
-                </span>
-              </div>
-              
-              {/* Campaign item 2 */}
-              <div className="flex items-center justify-between border-b border-stroke pb-4 dark:border-strokedark">
-                <div>
-                  <h5 className="text-sm font-medium">{t('newProductLaunch')}</h5>
-                  <p className="text-xs text-body-color">{t('social')}</p>
-                </div>
-                <span className="rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  {t('active')}
-                </span>
-              </div>
-              
-              {/* Campaign item 3 */}
-              <div className="flex items-center justify-between border-b border-stroke pb-4 dark:border-strokedark">
-                <div>
-                  <h5 className="text-sm font-medium">{t('blackFridaySale')}</h5>
-                  <p className="text-xs text-body-color">{t('email')}</p>
-                </div>
-                <span className="rounded-full bg-warning bg-opacity-10 py-1 px-3 text-sm font-medium text-warning">
-                  {t('scheduled')}
-                </span>
-              </div>
-              
-              {/* Campaign item 4 */}
-              <div className="flex items-center justify-between border-b border-stroke pb-4 dark:border-strokedark">
-                <div>
-                  <h5 className="text-sm font-medium">{t('reengagementCampaign')}</h5>
-                  <p className="text-xs text-body-color">{t('email')}</p>
-                </div>
-                <span className="rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  {t('active')}
-                </span>
-              </div>
-              
-              {/* Campaign item 5 */}
               <div className="flex items-center justify-between">
-                <div>
-                  <h5 className="text-sm font-medium">{t('brandAwareness')}</h5>
-                  <p className="text-xs text-body-color">{t('search')}</p>
+                <div className="flex items-center gap-2">
+                  <span className="block h-4 w-4 rounded-full bg-primary"></span>
+                  <span className="font-medium text-black dark:text-white">
+                    {t('email')}
+                  </span>
                 </div>
-                <span className="rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  {t('active')}
-                </span>
+                <span className="font-medium text-black dark:text-white">34%</span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="block h-4 w-4 rounded-full bg-success"></span>
+                  <span className="font-medium text-black dark:text-white">
+                    {t('social')}
+                  </span>
+                </div>
+                <span className="font-medium text-black dark:text-white">27%</span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="block h-4 w-4 rounded-full bg-warning"></span>
+                  <span className="font-medium text-black dark:text-white">
+                    {t('seo')}
+                  </span>
+                </div>
+                <span className="font-medium text-black dark:text-white">21%</span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="block h-4 w-4 rounded-full bg-danger"></span>
+                  <span className="font-medium text-black dark:text-white">
+                    {t('ppc')}
+                  </span>
+                </div>
+                <span className="font-medium text-black dark:text-white">13%</span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="block h-4 w-4 rounded-full bg-meta-4"></span>
+                  <span className="font-medium text-black dark:text-white">
+                    {t('direct')}
+                  </span>
+                </div>
+                <span className="font-medium text-black dark:text-white">5%</span>
               </div>
             </div>
           </div>
