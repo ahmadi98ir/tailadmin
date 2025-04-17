@@ -9,6 +9,13 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   output: 'standalone',
+  trailingSlash: true, // این باعث می‌شود که URL‌ها با / پایان یابند
+  images: {
+    unoptimized: true, // حل مشکل بهینه‌سازی تصاویر
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false, // حل مشکل Suspense
+  },
   poweredByHeader: false,
   reactStrictMode: true,
   // برای کار کردن با assetPrefix در محیط‌های مختلف
