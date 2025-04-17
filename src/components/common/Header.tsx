@@ -22,7 +22,12 @@ import {
   BellIcon,
   CogIcon,
   HomeIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
+  QuestionMarkCircleIcon,
+  BoltIcon,
+  CommandLineIcon,
+  SpeakerWaveIcon,
+  SpeakerXMarkIcon
 } from '@/components/icons';
 
 const Header = () => {
@@ -35,12 +40,22 @@ const Header = () => {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [settingsDropdownOpen, setSettingsDropdownOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
+  const [quickActionsOpen, setQuickActionsOpen] = useState(false);
+  const [keyboardShortcutsOpen, setKeyboardShortcutsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [previewTheme, setPreviewTheme] = useState<'light' | 'dark' | null>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const notificationSound = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    notificationSound.current = new Audio('/sounds/notification.mp3');
+  }, []);
 
   // Mock data - replace with actual data
   const notifications = [
@@ -49,6 +64,20 @@ const Header = () => {
   ];
 
   const unreadNotifications = notifications.filter(n => !n.read).length;
+
+  const quickActions = [
+    { label: 'New User', icon: UserIcon, action: () => router.push('/users/new') },
+    { label: 'Settings', icon: CogIcon, action: () => router.push('/settings') },
+    { label: 'Help', icon: QuestionMarkCircleIcon, action: () => setHelpOpen(true) },
+  ];
+
+  const keyboardShortcuts = [
+    { key: 'Ctrl/Cmd + K', action: 'Search' },
+    { key: 'Ctrl/Cmd + T', action: 'Toggle Theme' },
+    { key: 'Ctrl/Cmd + D', action: 'Toggle Direction' },
+    { key: 'Ctrl/Cmd + H', action: 'Show Help' },
+    { key: 'Ctrl/Cmd + Q', action: 'Quick Actions' },
+  ];
 
   // Mock search suggestions - replace with actual API call
   const suggestions = [
@@ -87,6 +116,27 @@ const Header = () => {
         e.preventDefault();
         toggleDirection();
       }
+      // Ctrl/Cmd + H for help
+      if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+        e.preventDefault();
+        setHelpOpen(true);
+      }
+      // Ctrl/Cmd + Q for quick actions
+      if ((e.ctrlKey || e.metaKey) && e.key === 'q') {
+        e.preventDefault();
+        setQuickActionsOpen(true);
+      }
+      // Escape to close all dropdowns
+      if (e.key === 'Escape') {
+        setDropdownOpen(false);
+        setLanguageDropdownOpen(false);
+        setSettingsDropdownOpen(false);
+        setNotificationsOpen(false);
+        setHelpOpen(false);
+        setQuickActionsOpen(false);
+        setKeyboardShortcutsOpen(false);
+        setShowSuggestions(false);
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown as any);
@@ -97,28 +147,69 @@ const Header = () => {
     setDropdownOpen(!dropdownOpen);
     setSettingsDropdownOpen(false);
     setNotificationsOpen(false);
+    setHelpOpen(false);
+    setQuickActionsOpen(false);
   };
 
   const handleToggleLanguageDropdown = () => {
     setLanguageDropdownOpen(!languageDropdownOpen);
     setSettingsDropdownOpen(false);
     setNotificationsOpen(false);
+    setHelpOpen(false);
+    setQuickActionsOpen(false);
   };
 
   const handleToggleSettings = () => {
     setSettingsDropdownOpen(!settingsDropdownOpen);
     setDropdownOpen(false);
     setNotificationsOpen(false);
+    setHelpOpen(false);
+    setQuickActionsOpen(false);
   };
 
   const handleToggleNotifications = () => {
     setNotificationsOpen(!notificationsOpen);
     setDropdownOpen(false);
     setSettingsDropdownOpen(false);
+    setHelpOpen(false);
+    setQuickActionsOpen(false);
+    if (!isMuted && notificationSound.current) {
+      notificationSound.current.play();
+    }
+  };
+
+  const handleToggleHelp = () => {
+    setHelpOpen(!helpOpen);
+    setDropdownOpen(false);
+    setSettingsDropdownOpen(false);
+    setNotificationsOpen(false);
+    setQuickActionsOpen(false);
+  };
+
+  const handleToggleQuickActions = () => {
+    setQuickActionsOpen(!quickActionsOpen);
+    setDropdownOpen(false);
+    setSettingsDropdownOpen(false);
+    setNotificationsOpen(false);
+    setHelpOpen(false);
   };
 
   const handleToggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleToggleMute = () => {
+    setIsMuted(!isMuted);
+  };
+
+  const handleThemePreview = (newTheme: 'light' | 'dark') => {
+    setPreviewTheme(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
+
+  const handleThemePreviewEnd = () => {
+    setPreviewTheme(null);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
   };
 
   // Close the dropdowns when clicked outside
@@ -130,11 +221,15 @@ const Header = () => {
           !target.closest('.search-container') &&
           !target.closest('.settings-dropdown') &&
           !target.closest('.notifications-dropdown') &&
+          !target.closest('.help-dropdown') &&
+          !target.closest('.quick-actions-dropdown') &&
           !target.closest('.mobile-menu')) {
         setDropdownOpen(false);
         setLanguageDropdownOpen(false);
         setSettingsDropdownOpen(false);
         setNotificationsOpen(false);
+        setHelpOpen(false);
+        setQuickActionsOpen(false);
         setIsSearchFocused(false);
         setShowSuggestions(false);
       }
@@ -309,6 +404,34 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-4">
+          <div className="relative quick-actions-dropdown">
+            <button
+              onClick={handleToggleQuickActions}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label={t('quickActions')}
+              title={t('quickActions')}
+            >
+              <BoltIcon className="w-5 h-5" />
+            </button>
+            {quickActionsOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 animate-fadeIn">
+                {quickActions.map((action, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      action.action();
+                      setQuickActionsOpen(false);
+                    }}
+                    className="flex items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <action.icon className="w-4 h-4 mr-2" />
+                    {action.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div className="relative notifications-dropdown">
             <button
               onClick={handleToggleNotifications}
@@ -323,8 +446,19 @@ const Header = () => {
             </button>
             {notificationsOpen && (
               <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 animate-fadeIn">
-                <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
                   <h3 className="font-semibold">{t('notifications')}</h3>
+                  <button
+                    onClick={handleToggleMute}
+                    className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                    aria-label={isMuted ? t('unmuteNotifications') : t('muteNotifications')}
+                  >
+                    {isMuted ? (
+                      <SpeakerXMarkIcon className="w-4 h-4" />
+                    ) : (
+                      <SpeakerWaveIcon className="w-4 h-4" />
+                    )}
+                  </button>
                 </div>
                 {notifications.map(notification => (
                   <div
@@ -357,9 +491,14 @@ const Header = () => {
             </button>
             {settingsDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 animate-fadeIn">
+                <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                  <h3 className="font-semibold">{t('theme')}</h3>
+                </div>
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onMouseEnter={() => handleThemePreview(theme === 'dark' ? 'light' : 'dark')}
+                  onMouseLeave={handleThemePreviewEnd}
+                  className="flex items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   {theme === 'dark' ? (
                     <>
@@ -375,14 +514,17 @@ const Header = () => {
                 </button>
                 <button
                   onClick={setSystemTheme}
-                  className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="flex items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <ComputerIcon className="w-4 h-4 mr-2" />
                   {t('useSystemTheme')}
                 </button>
+                <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                  <h3 className="font-semibold">{t('direction')}</h3>
+                </div>
                 <button
                   onClick={toggleDirection}
-                  className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="flex items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   {isRTL ? (
                     <>
@@ -396,6 +538,41 @@ const Header = () => {
                     </>
                   )}
                 </button>
+              </div>
+            )}
+          </div>
+
+          <div className="relative help-dropdown">
+            <button
+              onClick={handleToggleHelp}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label={t('help')}
+              title={t('help')}
+            >
+              <QuestionMarkCircleIcon className="w-5 h-5" />
+            </button>
+            {helpOpen && (
+              <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 animate-fadeIn">
+                <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                  <h3 className="font-semibold">{t('help')}</h3>
+                </div>
+                <button
+                  onClick={() => {
+                    setKeyboardShortcutsOpen(true);
+                    setHelpOpen(false);
+                  }}
+                  className="flex items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <CommandLineIcon className="w-4 h-4 mr-2" />
+                  {t('keyboardShortcuts')}
+                </button>
+                <Link
+                  href="/help"
+                  className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <QuestionMarkCircleIcon className="w-4 h-4 mr-2" />
+                  {t('documentation')}
+                </Link>
               </div>
             )}
           </div>
@@ -514,6 +691,33 @@ const Header = () => {
                 </button>
               </div>
             </nav>
+          </div>
+        </div>
+      )}
+
+      {/* Keyboard Shortcuts Modal */}
+      {keyboardShortcutsOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setKeyboardShortcutsOpen(false)} />
+          <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-96 animate-fadeIn">
+            <h2 className="text-xl font-semibold mb-4">{t('keyboardShortcuts')}</h2>
+            <div className="space-y-2">
+              {keyboardShortcuts.map((shortcut, index) => (
+                <div key={index} className="flex justify-between items-center">
+                  <span className="text-gray-600 dark:text-gray-300">{shortcut.action}</span>
+                  <kbd className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm">
+                    {shortcut.key}
+                  </kbd>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={() => setKeyboardShortcutsOpen(false)}
+              className="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+              aria-label={t('close')}
+            >
+              <XMarkIcon className="w-5 h-5" />
+            </button>
           </div>
         </div>
       )}
