@@ -38,62 +38,49 @@ html.dark {
   --foreground: #ededed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Vazirmatn', Arial, Helvetica, sans-serif;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Vazirmatn', Arial, Helvetica, sans-serif;
 }
 
 /* RTL Specific Styles */
 html[dir="rtl"] {
   /* Text alignment */
   text-align: right;
-  
-  /* Flexbox direction */
-  .flex-row {
-    flex-direction: row-reverse;
-  }
-  
-  /* Margin and padding utilities */
-  .ms-auto {
-    margin-right: auto !important;
-    margin-left: 0 !important;
-  }
-  
-  .me-auto {
-    margin-left: auto !important;
-    margin-right: 0 !important;
-  }
-  
-  /* Transform utilities */
-  .rotate-180 {
-    transform: rotate(180deg);
-  }
-  
-  /* Border radius utilities */
-  .rounded-s {
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-  }
-  
-  .rounded-e {
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-  }
+}
+
+html[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* Margin and padding utilities */
+html[dir="rtl"] .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+html[dir="rtl"] .me-auto {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Transform utilities */
+html[dir="rtl"] .rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Border radius utilities */
+html[dir="rtl"] .rounded-s {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+html[dir="rtl"] .rounded-e {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 html[dir="rtl"] body {
@@ -101,7 +88,7 @@ html[dir="rtl"] body {
 }
 
 html[dir="ltr"] body {
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: sans-serif, Arial, Helvetica, sans-serif;
   text-align: left;
 }
 
